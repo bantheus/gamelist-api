@@ -1,9 +1,11 @@
 package com.matheus.gamelist.controllers;
 
+import com.matheus.gamelist.dto.GameDTO;
 import com.matheus.gamelist.dto.GameMinDTO;
 import com.matheus.gamelist.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,5 +21,10 @@ public class GameController {
     @GetMapping
     public List<GameMinDTO> findAll() {
         return gameService.findAll();
+    }
+
+    @GetMapping(value = "/{gameId}")
+    public GameDTO findById(@PathVariable("gameId") Long gameId) {
+        return gameService.findById(gameId);
     }
 }
