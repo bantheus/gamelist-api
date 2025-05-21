@@ -3,6 +3,7 @@ package com.matheus.gamelist.services;
 import com.matheus.gamelist.dto.GameDTO;
 import com.matheus.gamelist.dto.GameMinDTO;
 import com.matheus.gamelist.entities.Game;
+import com.matheus.gamelist.projections.GameMinProjection;
 import com.matheus.gamelist.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,11 @@ public class GameService {
     public GameDTO findById(Long gameId) {
         Game result = gameRepository.findById(gameId).get();
         return new GameDTO(result);
+    }
+
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId) {
+        List<GameMinProjection> result = gameRepository.searchByList(listId);
+        return result.stream().map(GameMinDTO::new).toList();
     }
 }
