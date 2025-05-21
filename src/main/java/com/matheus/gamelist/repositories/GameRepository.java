@@ -4,6 +4,7 @@ import com.matheus.gamelist.entities.Game;
 import com.matheus.gamelist.projections.GameMinProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -17,5 +18,5 @@ public interface GameRepository extends JpaRepository<Game, Long> {
             WHERE tb_belonging.list_id = :listId
             ORDER BY tb_belonging.position
             """)
-    List<GameMinProjection> searchByList(Long listId);
+    List<GameMinProjection> searchByList(@Param("listId") Long listId);
 }
