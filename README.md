@@ -64,6 +64,19 @@ O projeto segue uma arquitetura padrão do Spring Boot com os seguintes componen
 
 - `GET /api/v1/lists` – Retorna todas as listas de jogos
 - `GET /api/v1/lists/{listId}/games` – Retorna todos os jogos de uma lista específica
+- `POST /api/v1/lists/{listId}/replacement` – Altera a posição de um jogo dentro da lista especificada, movendo-o de um
+  índice para outro.
+
+### Exemplo de body da requisição:
+
+```json
+{
+  "sourceIndex": 4,
+  "destinationIndex": 1
+}
+```
+
+Esse body move o jogo que está na posição 4 para a posição 1 na lista, reordenando os demais automaticamente.
 
 ## Configuração e Instalação
 
@@ -75,8 +88,7 @@ O projeto segue uma arquitetura padrão do Spring Boot com os seguintes componen
 
 ### Executando Localmente
 
-1. Clone o repositório:
-   ```bash
+1. Clone o repositório: ```bash
    git clone <repository-url>
    cd gamelist
    ```
