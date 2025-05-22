@@ -88,7 +88,8 @@ Esse body move o jogo que está na posição 4 para a posição 1 na lista, reor
 
 ### Executando Localmente
 
-1. Clone o repositório: ```bash
+1. Clone o repositório:
+    ```bash
    git clone <repository-url>
    cd gamelist
    ```
